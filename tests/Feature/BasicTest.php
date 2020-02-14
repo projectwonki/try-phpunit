@@ -21,13 +21,22 @@ class BasicTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function testSeeSomethingOnPage()
+    {
+        $response = $this->get('/');
+
+        // $this->assertContains('Go', $response);
+        // dd($response);
+        $response->assertSee('Create');
+    }
+
     public function testHasItemInBox()
     {
         $box = new Box(['item_one','item_two','item_three']);
 
         // this assertions is to test boolean (true or false) using assertTrue() and assertFalse()
         $this->assertTrue($box->has('item_one'));
-        $this->assertFalse($box->has('item_four'));
+        // $this->assertTrue($box->has('item_four'));
         $this->assertTrue($box->has('item_two'));
     }
 

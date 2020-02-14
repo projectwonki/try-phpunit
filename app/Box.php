@@ -52,6 +52,12 @@ class Box
         });
     }
 
+    /**
+     *  push one element to array
+     * 
+     * @param string $item
+     * @return array
+     */
     public function pushOne($item)
     {
         array_push($this->items, $item);
@@ -59,6 +65,12 @@ class Box
         return $item;
     }
 
+    /**
+     * 
+     * count total item of array
+     * @param -
+     * @return integer
+     */
     public function totalItem()
     {
         return $this->items;
