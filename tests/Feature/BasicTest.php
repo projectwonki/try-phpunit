@@ -6,29 +6,36 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Box;
+use App\Fruit;
 
 class BasicTest extends TestCase
 {
+    protected $fruit;
+
+    protected function setUp(): void
+    {
+        $this->fruit = new Fruit;
+    }
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function testExample()
-    {
-        $response = $this->get('/');
+    // public function testExample()
+    // {
+    //     $response = $this->get('/');
 
-        $response->assertStatus(200);
-    }
+    //     $response->assertStatus(200);
+    // }
 
-    public function testSeeSomethingOnPage()
-    {
-        $response = $this->get('/');
+    // public function testSeeSomethingOnPage()
+    // {
+    //     $response = $this->get('/');
 
-        // $this->assertContains('Go', $response);
-        // dd($response);
-        $response->assertSee('Create');
-    }
+    //     // $this->assertContains('Go', $response);
+    //     // dd($response);
+    //     $response->assertSee('Create');
+    // }
 
     public function testHasItemInBox()
     {
@@ -77,5 +84,12 @@ class BasicTest extends TestCase
 
         //when we used assertContains, first param must be complete request
         $this->assertContains('abcdefg',$array);
+    }
+
+    public function test_set_name_return_true()
+    {
+        $this->fruit->setName('apple');
+
+        $this->assertEquals('apple', $this->fruit->getName());
     }
 }
